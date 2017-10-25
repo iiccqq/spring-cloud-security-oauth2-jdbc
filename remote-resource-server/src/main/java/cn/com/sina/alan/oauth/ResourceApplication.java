@@ -31,7 +31,9 @@ public class ResourceApplication extends ResourceServerConfigurerAdapter {
     @Bean
     public RemoteTokenServices remoteTokenServices() {
         RemoteTokenServices remoteTokenServices = new RemoteTokenServices();
-        remoteTokenServices.setCheckTokenEndpointUrl("http://localhost:8080/oauth/check_token");
+        remoteTokenServices.setClientId("acme");
+        remoteTokenServices.setClientSecret("acmesecret");
+        remoteTokenServices.setCheckTokenEndpointUrl("http://localhost:8080/uaa/oauth/check_token");
         return remoteTokenServices;
     }
 
