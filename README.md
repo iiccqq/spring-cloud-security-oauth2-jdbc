@@ -13,3 +13,7 @@ get:
 http://localhost:8081/hello
 
 
+resource-server适用于client方来验证token
+resource-server2适用于resource-server方验证token
+
+

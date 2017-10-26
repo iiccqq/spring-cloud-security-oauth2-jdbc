@@ -28,14 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ResourceApplication extends ResourceServerConfigurerAdapter {
 
     // 方式一：调用远程Auth server进行token校验
-    @Bean
-    public RemoteTokenServices remoteTokenServices() {
-        RemoteTokenServices remoteTokenServices = new RemoteTokenServices();
-        remoteTokenServices.setClientId("acme");
-        remoteTokenServices.setClientSecret("acmesecret");
-        remoteTokenServices.setCheckTokenEndpointUrl("http://localhost:8080/uaa/oauth/check_token");
-        return remoteTokenServices;
-    }
+  
 
     public static void main(String[] args) {
         SpringApplication.run(ResourceApplication.class, args);
@@ -67,7 +60,11 @@ public class ResourceApplication extends ResourceServerConfigurerAdapter {
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
         System.out.println("==========================Configuring ResourceServerSecurityConfigurer ");
-        resources.resourceId("oauth2-resource");
+        RemoteTokenServices remoteTokenServices = new RemoteTokenServices();
+        remoteTokenServices.setClientId("acme");
+        remoteTokenServices.setClientSecret("acmesecret");
+        remoteTokenServices.setCheckTokenEndpointUrl("http://localhost:8080/uaa/oauth/check_token");       
+        resources.resourceId("oauth2-resource").tokenServices(remoteTokenServices);
     }
 
 }
