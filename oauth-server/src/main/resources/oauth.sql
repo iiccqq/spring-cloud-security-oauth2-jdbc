@@ -156,3 +156,7 @@ INSERT INTO `users` VALUES ('reader', 'reader', 'Y'), ('writer', 'writer', 'Y');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+
+
+UPDATE `oauth_client_details` SET web_server_redirect_uri='http://localhost:8088/index' WHERE client_id='acme'
