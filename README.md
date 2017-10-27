@@ -15,7 +15,7 @@ http://localhost:8081/hello
 get:header,Authorization->Bearer3adb8e04-0935-4cc9-ad27-38a2018316b8
 http://localhost:8081/service2
 
-resource-server适用于client方来验证token
+resource-server适用于resource-server或者client方来验证token和client_id可以不是对应的。
 resource-server2适用于resource-server方验证token
 
 
